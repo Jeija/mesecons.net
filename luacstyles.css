@@ -1,0 +1,32 @@
+body {
+	background-color:#ffffff;
+	font-family:Ubuntu,Arial;
+}
+
+#topbar {
+	height:60px;
+	position: fixed;
+	background: rgba(0,100,200,0.2);
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#topbar img {
+	background:rgba(0,0,0,0.2);
+	height:56px;
+	padding:2px;
+	float:left;
+}
+
+#topbar h1 {
+	font-size:44px;
+	margin-top:0px;
+	margin-left:40%;
+	color:#000000;
+}
+
+#article {
+	background-color:rgba(0,0,0,0.4);
+	margin-top:80px;
+}

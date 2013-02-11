@@ -1,0 +1,233 @@
+body{
+	width: 100%; 
+	margin-right:auto; 
+	margin-left:auto;
+	font-family:Ubuntu, Arial;
+	background-image: url(img/bgd.png);
+}
+width: 100%; height: 100%;
+margin: 0 0;}
+
+.navigation_container {
+	margin-right:auto; 
+	margin-left:auto;
+}
+
+#navigation {
+	height:32px;
+	position: fixed;
+	background: #222233;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#navigation_bottom {
+	position: fixed;
+	top: 32px;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.3);
+	height: 5px;
+	display: block;
+}
+
+#navigation #navlink {
+	display: inline-block;
+	padding: 4px 5px 0px 7px;
+        float: left;
+        text-decoration: none;
+	font-weight:bold;
+        color: #827f00;
+        font-size: 18px;
+
+	-webkit-transition:color 0.2s ease;
+	-moz-transition:color 0.2s ease;
+	transition:color 0.2s ease;
+}
+
+#navigation #navlink:hover {
+        color: #ffff00;
+}
+
+#header {
+	background: #606400;
+	left:0;
+	right:0;
+	padding: 2em 0 0.5em 0;
+}
+
+#header .heading {
+        font-size: 4em;
+	margin-left:1.5em;
+	color: #ffff00;
+}
+
+#header .logo {
+	background-image:url(img/minetestlogo-bw.png);
+	float:left;
+	background-size:4.5em 4.5em;
+	width:4.5em;
+	height:4.5em;
+	margin-top:5px;
+	-webkit-transition:background-image 0.2s ease;
+	-moz-transition:background-image 0.2s ease;
+	transition:background-image 0.2s ease;
+}
+
+#header .logo:hover {
+	background-image:url(img/minetestlogo.png);
+	float:left;
+	-webkit-transition:background-image 0.2s ease;
+	-moz-transition:background-image 0.2s ease;
+	transition:background-image 0.2s ease;
+}
+
+#article{
+	background: #ffffff;
+	box-shadow: 0px 8px 8px rgba(0,0,0,0.4);
+	border: 7px solid #eeeeee;
+	margin: 1em 0;
+	margin-right:auto;
+	margin-left:auto;
+	width:93%;
+}
+
+#article .article-heading {
+	font-size: 2.6em;
+	color: #222222;
+}
+
+#article .paragraph-heading {
+	font-size: 1.5em;
+	color: #000000;
+}
+
+#article a{
+        color: #827f00;
+}
+
+#article a:hover, a:active {
+        color: #ffff00;
+}
+
+#article .text {
+        color: #666666;
+	font-size: 1.1em;
+}
+
+#article #items img{
+	background: #cccccc;
+   	border: 5px solid #cccccc;
+	width:205px;
+	height:205px;
+	-webkit-transition:border-color 0.2s ease;
+	-moz-transition:border-color 0.2s ease;
+	transition:border-color 0.2s ease;
+}
+
+#article #items img:hover{
+	background: #666666;
+   	border: 5px solid #666666;
+}
+
+#article .button{
+	color:#000000;
+	font-size: 1.25em;
+	background: #827f00;
+	border:7px solid #ffffff;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#827f00), color-stop(100%,#716e00));
+	background: -moz-linear-gradient(top, #827f00 0%, #716e00 100%);
+	background: linear-gradient(to bottom, #827f00 0%,#716e00 100%); /* W3C */
+
+	padding:9px;
+	-webkit-transition:border-color 0.3s ease;
+	-moz-transition:border-color 0.3s ease;
+	-o-transition:border-color 0.3s ease;
+	transition:border-color 0.3s ease;
+}
+
+#article .button:hover{
+	border:7px solid #cccc00;
+	-webkit-transition:border-color 0.3s ease;
+	-moz-transition:border-color 0.3s ease;
+	-o-transition:border-color 0.3s ease;
+	transition:border-color 0.3s ease;
+}
+
+#article .button:active{
+	color:#000000;
+	background: #ffff00;
+   	border-color: #ffff00;
+}
+
+#article .banner {
+	max-height:99px;
+	max-width:800px;
+	width:100%;
+   	border: 4px solid #666666;
+   	border-radius: 4px;
+}
+
+#article .screenshot {
+	width:400px;
+   	border: 6px solid #aaaaaa;
+   	border-radius: 6px;
+	-moz-transition:box-shadow 0.5s ease;
+	-webkit-transition:box-shadow 0.5s ease;
+	transition:box-shadow 0.5s ease;
+}
+#article .screenshot:hover {
+   	border: 6px solid #555555;
+   	border-radius: 6px;
+	box-shadow: 0 0 5px 5px #ffff00;
+}
+
+#article .youtube {
+   	border: 7px solid #000000;
+   	border-radius: 7px;
+	box-shadow: 0px 2px 3px #888888
+}
+
+#article .code {
+	padding: 5px;
+	border: 2px dotted #999999;
+	background: #ffffff;
+	font-family: Nimbus Mono L, Ubuntu, Arial
+}
+
+#article .code:hover
+{
+	background:#dddddd;
+	color:#000000;
+}
+
+#footer
+{
+	width:100%;
+	height:100px;
+}
+
+#footer .text {
+	text-align:center;
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	font-size: 1em;
+	color:#000000;
+}
+
+#footer .text a {
+	font-size: 1.2em;
+	color:#000000;
+}
+
+#footer .text a:hover {
+	color:#ffffff;
+}
+
+#footer .image {
+	height:100%;
+	background-image: url(img/footer.png);
+	background-size: 166px 100px;
+}
