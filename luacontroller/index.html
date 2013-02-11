@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>Mesecons - Luacontroller</title>
+
+	<script type="text/javascript"> /*Google Analytics*/
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-34109195-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+	<link rel="icon" type="image/ico" href="/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="luacstyles.css" media="screen" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div id = "topbar">
+		<a id="backbutton" href="/items.php">&larr;</a>
+		<div id="topheader">Luacontroller</div>
+		<img src="/textures/luacontroller.png">
+	</div>
+
+	<div id="article">
+
+
+<div id="header">Learning Lua</div>
+You don't have to learn Lua in order to use the Luacontroller, but it's highly recommended.<br/>
+A good Tutorial can be found <a href="http://lua-users.org/wiki/TutorialDirectory">here</a>, another option is learning by looking at source codes of mods and creating your own ones.
+<hr>
+<div id="header">First Steps</div>
+Craft the Luacontroller: <br/><img src="/crafts/luacontroller.png"><br/><br/>
+Build this circuit: <br/><img src="circuit.png" height=350px><br/><br/>
+Right-click the Luacontroller: <br/><img src="luacontroller_ui.png" height=350px><br/><br/>
+The green box is called the code area, this is where you code everything.<br/>
+The Execute button below checks the code for errors and executes it. In case there are errors, they will appear in the space between the code area and the button.<br/>
+Use the white X on the top right to close the window.<br/>
+<hr>
+
+
+<div id="header">Chapter I: Your First Program</div>
+<div id="code">
+port.a = true
+</div>
+Enter this and close the window. If you did well, the A-Port should now light up.<br/><br/>
+You can also set multiple ports at once:
+<div id="code">
+port.a = true<br/>
+port.b = true<br/>
+port.c = true<br/>
+</div><br/>
+The same thin is also possible in one line only:
+<div id="code">
+port = {a=true, b=true, c=true}
+</div><br/>
+All ports are reset when Programming the Controller. However, you can also turn them off manually:<br/>
+<div id="code">
+port = {a=false, b=true, c=false, d=true}
+</div><br/>
+Mind that ports are set after the whole code was executed.
+<div id="code">
+port.a = true<br/>
+port.a = false
+</div> 
+This program won't even activate Port A for a millisecond.<br/>
+<hr>
+
+
+<div id="code">
+print()
+</div>
+Is a great function. It can mostly output anything you want through the console (the black window that likely started with minetest or the terminal you launched minetest from)
+<div id="code">
+print("Hello World!")<br/>
+print("What is the answer to life the universe and everything?")<br/>
+print(42)<br/>
+print({answer=42, question="unknown"})<br/>
+print(port.c)<br/>
+print(port)
+</div>
+As you can see, the print() function is a very flexible and useful Utility, especially for debugging of your programs.<br/>
+<b>SOME EXERCISES OR WHAT-I-HAVE-LEARNED-SO-FAR HERE?</b>
+<hr>
+<div id="header">Chapter II: Input</div>
+
+
+
+	</div>
+</body>
+</html>
