@@ -1,7 +1,6 @@
 <?php include "header.html";?>
 
 <div id = "article">
-	<img src="img/logo.png" class = "banner">
 	<div class = "paragraph-heading">What are mesecons?</div><br/>
 	<div class = "text">
 		"Mesecons" is a (free) mod for the game minetest-c55 (<a href="http://minetest.net">minetest.net</a>).<br/>

@@ -1,5 +1,6 @@
 <?php include "../header.html";?>
 <div id = "article">
+	<b>Deprecated! Use the LuaController instead!</b>
 	<div class = "article-heading">Microcontroller</div><br/>
 	<div class = "paragraph-heading">Craft recipe</div>
 	<img src = "../crafts/microcontroller.png">
