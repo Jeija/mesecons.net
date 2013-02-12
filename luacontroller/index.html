@@ -16,7 +16,7 @@
 
 	<link rel="icon" type="image/ico" href="/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="luacstyles.css" media="screen" />
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Cantarell:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div id = "topbar">
@@ -28,13 +28,21 @@
 	<div id="article">
 
 
+<div id="warning">This part contains warnings and common mistakes.</div>
+<div id="summary">This passage summarizes things you have learned in the chapter or makes things clear.</div>
+<div id="task">This is a task for you to check your knowledge.</div>
+
+
+<hr>
+
+
 <div id="header">Learning Lua</div>
 You don't have to learn Lua in order to use the Luacontroller, but it's highly recommended.<br/>
 A good Tutorial can be found <a href="http://lua-users.org/wiki/TutorialDirectory">here</a>, another option is learning by looking at source codes of mods and creating your own ones.
 <hr>
 <div id="header">First Steps</div>
 Craft the Luacontroller: <br/><img src="/crafts/luacontroller.png"><br/><br/>
-Build this circuit: <br/><img src="circuit.png" height=350px><br/><br/>
+Build this circuit: <br/><img src="circuit.png" id="enlarge" height=250px><br/><br/>
 Right-click the Luacontroller: <br/><img src="luacontroller_ui.png" height=350px><br/><br/>
 The green box is called the code area, this is where you code everything.<br/>
 The Execute button below checks the code for errors and executes it. In case there are errors, they will appear in the space between the code area and the button.<br/>
@@ -42,7 +50,7 @@ Use the white X on the top right to close the window.<br/>
 <hr>
 
 
-<div id="header">Chapter I: Your First Program</div>
+<div id="header">Chapter I: Your First Program: Output</div>
 <div id="code">
 port.a = true
 </div>
@@ -60,13 +68,24 @@ port = {a=true, b=true, c=true}
 All ports are reset when Programming the Controller. However, you can also turn them off manually:<br/>
 <div id="code">
 port = {a=false, b=true, c=false, d=true}
-</div><br/>
+</div>
+<div id="warning">
 Mind that ports are set after the whole code was executed.
 <div id="code">
 port.a = true<br/>
 port.a = false
 </div> 
 This program won't even activate Port A for a millisecond.<br/>
+</div>
+<div id="summary">
+Now you know how to set ports of a microcontroller.<br/>
+A table value for the microcontroller like
+ports is is called "<b>register</b>".
+In the Microcontroller ports are set from A to D, if it gets interrupted meanwhile,
+it stops setting ports.
+</div>
+
+
 <hr>
 
 
@@ -83,11 +102,276 @@ print(port.c)<br/>
 print(port)
 </div>
 As you can see, the print() function is a very flexible and useful Utility, especially for debugging of your programs.<br/>
-<b>SOME EXERCISES OR WHAT-I-HAVE-LEARNED-SO-FAR HERE?</b>
+Mind that ports are set after the whole code was executed.
+<div id="warning">
+print() cannot output multiple arguments:
+<div id="code">
+print("ab", "cd")
+Use this instead:
+print("ab".."cd")
+</div>
+</div>
+<div id="task">
+Write a program that first activates ports B and D and then outputs the whole resulting register.
+</div>
+
+
 <hr>
+
+
 <div id="header">Chapter II: Input</div>
+The input register is called "<b>pin</b>".
+<div id="code">
+print(pin)
+</div>
+This simple code will give you the state of all the inputs at any time.
+Basically pin is the merger of incoming power and internal ports that are active.<br/>
+<div id="warning">
+The whole code is only executed on an event, see Chapter V.
+</div><br/>
+You can easily establish a relation between input and output:
+<div id="code">
+port.b = pin.a
+</div>
+Port B now always adapts the state of port A.<br/>
+<div id="code">
+port.a = true
+port.b = pin.a
+</div>
+The first time this code is executed, port B will stay inactive: Remember, ports are set after the whole code was executed.<br/>However, on a second event, this code will activate port B.
+<div id="summary">
+Now you know how to retrieve the state of ports. In the next chapter you'll learn to use them.
+</div>
+<div id="task">
+Write a program that emulates a simple diode crossing:<br/>
+Port A adapts the state of port C, port B adapts the state of port D.
+</div>
 
 
+<hr>
+
+
+<div id="header">Chapter III: Logic</div>
+You can replace all gates with the Luacontroller. Lua provides you three logic operators that you can use:<br/>
+not, and, or
+Additionally, you can use equals(==) unequals(~=) and paranthesis (brackets).<br/>
+<div id="code">
+-- AND<br/>
+port.a = pin.b and pin.c<br/>
+-- OR<br/>
+port.a = pin.b or pin.c<br/>
+-- NOT<br/>
+port.a = not pin.b<br/>
+-- NAND<br/>
+port.a = not (pin.b and pin.c)<br/>
+-- NOR<br/>
+port.a = not (pin.b or pin.c)<br/>
+-- XOR<br/>
+port.a = pin.b ~= pin.c<br/>
+-- XNOR / NXOR<br/>
+port.a = pin.b == pin.c<br/>
+</div><br/>
+You can also make some more difficult constructions, in this example pin A and B must both be true and pin B mustn't be the same state like pin D, then an output is triggered:
+<div id="code">
+if (pin.a and pin.b and (pin.b ~= pin.d)) then<br/>
+&nbsp;&nbsp;print("Lua rocks")<br/>
+end
+</div>
+<div id="task">
+<ul>
+<li>Write a program that activates port A if all the other pins are the same state.</li>
+<li>Write a program that activates port C if pin A and B are both true and pin D is false.</li>
+</ul>
+</div>
+
+
+<hr>
+
+
+<div id="header">Chapter IV: Interrupts</div>
+<div id="code">
+interrupt(1)
+print("execute")
+</div>
+This simple code snippet is executed over and over, all 1 second. Interrupts are basically timers, they make the code get executed again after a specific time, here it is 1 second.<br/>
+You can also pass a single argument to the next call, use
+<div id="code">
+interrupt(1, "a parameter")
+</div>
+You can also use numbers or even tables as iid (like pin).
+<div id="warning">
+An interrupt is identified by its argument (= iid = interrupt ID). When setting up an interrupt with a specific parameter and programming the controller again, it will not be deleted if after programming another interrupt with an equal iid is set up (ignore this if you don't understand it).
+</div>
+You can access the parameter using
+<div id="code">
+interrupt(0.5, "a parameter")<br/>
+print(event.iid)
+</div>
+See chapter V for details.
+<div id="warning">
+When using too small values for the time, the microcontroller may overheat and drop itself, see chapter VII.
+</div>
+<div id="task">
+Code a timer that toggles port A every two seconds.
+</div>
+<div id="warning">
+When restarting the game, the timer stops working! Use e.g. a blinky plant to restart it.
+</div>
+
+
+<hr>
+
+
+<div id="header">Chapter V: Events</div>
+Always if the code is executed, there is some reason for it.
+This reason is called event. You can access some of its properties in the event register.
+<div id="code">
+print(event)
+</div>
+event.type defines the kind of event that occured. There may also be some additional information.
+The following types of events exist:
+<table border="0" id="eventtable">
+<tr>
+	<td>program</td>
+	<td>Thrown when the controller gets programmed.</td>
+</tr>
+<tr>
+	<td>on</td>
+	<td>Thrown when any port is activated.<br/>
+	Additional information available in event.pin: The name of the port (A, B, C or D)</td>
+</tr>
+<tr>
+	<td>off</td>
+	<td>Thrown when any port is deactivated.<br/>
+	Additional information available in event.pin: The name of the port (A, B, C or D)</td>
+</tr>
+<tr>
+	<td>interrupt</td>
+	<td>Thrown when an interrupt timer elapses.<br/>
+	Additional information available in event.iid: The iid specified in interrupt(time, iid)</td>
+</tr>
+<tr>
+	<td>digiline</td>
+	<td>Thrown when information from a digiline was received.<br/>
+	Additional information available in event.channel: The channel of the message;<br/>
+	and event.msg: The content of the message. See chapter VIII for details</td>
+</tr>
+</table>
+<br/>
+This now enables us to code a simple T-FlipFlop:
+<div id="code">
+if (event.type == "on" and event.pin == "B") then<br/>
+&nbsp;&nbsp;port.a = not port.a<br/>
+end
+</div>
+This toggles port A on falling edge of pin B.
+<div id="task">
+Write a program that toggles all ports apart from A when there is a falling edge on pin A.
+</div>
+
+
+<hr>
+
+
+<div id="header">Chapter VI: Memory</div>
+This is one of the easiest chapters:
+mem is a table that you can store your information in.
+It only gets deleted when digging the controller, you can even program it without data loss.
+<div id="code">
+print (mem.var)
+mem.var = "example"
+</div>
+The first time you execute this code, the output will be nil. But after that it will always be "example" - you need to dig the controller to delete that information.
+
+
+<hr>
+
+
+<div id="header">Chapter VII: Overheating</div>
+You may have already come across overheating, e.g. if you connected both ports of a NOT-Gate.<br/>
+Overheating basically protects the minetest server from crashing. The controller overheats if there are more than 20 operations within 0.5 seconds. Simply try this:
+<div id="code">
+port.a = not pin.b
+</div>
+and connect port A and B. Result: The Controller will drop itself.<br/>
+You can also provoke overheating by setting up too many interrupts:
+<div id="code">
+interrupt(1)<br/>
+interrupt(1)
+</div>
+Each of these interrupts launches two more, and so after just a few seconds the controller will overheat.
+
+
+<hr>
+
+
+<div id="header">Chapter VIII: Digilines</div>
+First of all, you need the digilines mod from <a href="https://github.com/Jeija/minetest-mod-digilines">here</a>.<br/>
+Digilines are bus wires (like i2c, SPI or RS232 in real electronics) that can be used to connect different digital devices like luacontrollers.<br/>
+Digilines are very powerful and can also be used to e.g. build a multiplier in a very small space, or even a whole computer in the size of a typical, larger minetest house.<br/>
+So let's use them!
+<div id="code">
+digiline_send(channel, msg)
+</div>
+This is basically the only function you need to remember. This function allows you to send any message on any channel, you can send numbers, bools, strings or even tables.<br/>
+You can connect a digiline just like an ordinary mesecon wire, you will have to use a port on it.
+To access information received from a digiline use:
+<div id="code">
+if (event.type=="digiline")<br/>
+&nbsp;&nbsp;print(event.channel)<br/>
+&nbsp;&nbsp;print(event.msg)<br/>
+end
+</div>
+
+<div id="summary">
+You know all the basics of luacontroller programming now, you should be able to build great structures already, even if you don't realize it yet. Start with something small like a 4-bit memory and got on with even larger structures. But most importantly, be creative!
+</div>
+
+<div id="task">
+<ul>
+<li>Transmit the states of Pin A and B through a digiline to another microcontroller and output them there</li>
+<li>Make a simple adder. You need to use input microcontrollers and output microcontrollers, connect them via digilines.</li>
+</ul>
+</div>
+
+
+<hr>
+
+
+<div id="header">Chapter IX: Restrictions</div>
+Even though the whole code runs in a sandbox, the environment must be restricted so that there is no chance for a player to crash the whole server.<br/>
+This is an extract from the source code that shows the available non-core functionality in the environment:
+<div id="code">
+{<br/>
+print = safeprint,<br/>
+pin = merge_portstates(vports, rports),<br/>
+port = vports,<br/>
+interrupt = getinterrupt(pos),<br/>
+digiline_send = getdigiline_send(pos),<br/>
+mem = mem,<br/>
+tostring = tostring,<br/>
+tonumber = tonumber,<br/>
+string = string,<br/>
+event = event<br/>
+}
+</div>
+There are no other functions apart from these. Additionally, some core-functions had to be blocked:
+<div id="code">
+local prohibited = {"while", "for", "repeat", "until", "function"}
+</div>
+This must have been done to make sure noone codes an infinite loop or a near-infinite thing.
+In case you want to allow these functions, modify the line above in the sourcecode in mesecons_luacontroller/init.lua
+
+
+<hr>
+
+
+<div id="header">Support / Help</div>
+If you need help or Support, it is best to ask in the meseons forum topic or if it's a digiline-related question in the digiline topic.
+<br/><br/>
+<div id="header">Have fun!</div>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<g:plusone></g:plusone>
 
 	</div>
 </body>
