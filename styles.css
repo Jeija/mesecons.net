@@ -91,6 +91,7 @@ margin: 0 0;}
 	margin-right:auto;
 	margin-left:auto;
 	width:93%;
+	max-width:1000px;
 }
 
 #article .article-heading {
@@ -104,11 +105,25 @@ margin: 0 0;}
 }
 
 #article a{
-        color: #827f00;
+        color: #505c00;
 }
 
 #article a:hover, a:active {
-        color: #ffff00;
+        color: #aaaa00;
+}
+
+#article #doculink {
+	color:#404c00;
+	font-size:2.5em;
+	border:2px solid #505c00;
+	text-decoration:none;
+	background-color:#cccccc;
+	border-radius:8px;
+}
+
+#article #doculink:hover {
+        color: #777700;
+	border-color:#aaaa00;
 }
 
 #article .text {
@@ -138,6 +153,11 @@ margin: 0 0;}
 	background: #cccccc;	
 	width:140px;
 	height:140px;
+}
+
+#article #items #item.featured {
+	background: #999900;
+   	border-color:#999900;
 }
 
 #article #items #item #name {

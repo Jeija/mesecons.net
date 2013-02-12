@@ -8,12 +8,13 @@
 	<br/>
 	<div class = "paragraph-heading">Description</div>
 	<div class = "text">
+		<p>
 		The luacontroller is an advanced programmable component.<br/>
 		You can simply code it in the language mesecons uses itself: Lua!<br/>
 		All the code runs in a sandbox, so it's completely safe (no warranty anyway)<br/>
+		</p>
 
-		<b>This is not completely finished, documentation is missing.<br/>
-		Use the microcontroller instead meanwhile.</b>
+		<a href="/luacontroller" id="doculink">Documentation>>></a>
 	</div>
 </div>
 <?php include "../footer.html";?>

@@ -57,6 +57,7 @@
 	<a id="item" href="items/removestone.php" title="Removestone">
 		<img src = "textures/removestone.png"><div id="name">Removestone</div></a>
 	<a id="item" href="items/ghoststone.php" title="Ghoststone">
+
 		<img src = "textures/ghoststone.png"><div id="name">Ghoststone</div></a>
 	<a id="item" href="items/commandblock.php" title="Command Block">
 		<img src = "textures/commandblock.png"><div id="name">Command Block</div></a>
@@ -73,7 +74,7 @@
 		<img src = "textures/lightstone_blue.png"><div id="name">Blue</div></a>
 	<hr />
 	<div class="paragraph-heading">Logic</div>
-	<a id="item" href="items/luacontroller.php" title="Luacontroller">
+	<a id="item" class="featured" href="items/luacontroller.php" title="Luacontroller">
 		<img src = "textures/luacontroller.png"><div id="name">Luacontroller</div></a>
 	<a id="item" href="items/microcontroller.php" title="Microcontroller (deprecated)">
 		<img src = "textures/microcontroller.png"><div id="name">Microcontroller</div></a>
