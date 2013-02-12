@@ -35,7 +35,7 @@
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Learning Lua</div>
 You don't have to learn Lua in order to use the Luacontroller, but it's highly recommended.<br/>
 A good Tutorial can be found <a href="http://lua-users.org/wiki/TutorialDirectory">here</a>, another option is learning by looking at source codes of mods and creating your own ones.
@@ -48,8 +48,9 @@ The green box is called the code area, this is where you code everything.<br/>
 The Execute button below checks the code for errors and executes it. In case there are errors, they will appear in the space between the code area and the button.<br/>
 Use the white X on the top right to close the window.<br/>
 <hr>
+</div>
 
-
+<div id="chapter">
 <div id="header">Chapter I: Your First Program: Output</div>
 <div id="code">
 port.a = true
@@ -85,9 +86,11 @@ In the Microcontroller ports are set from A to D, if it gets interrupted meanwhi
 it stops setting ports.
 </div>
 
+<br/>
 
 <hr>
 
+<br/>
 
 <div id="code">
 print()
@@ -114,11 +117,11 @@ print("ab".."cd")
 <div id="task">
 Write a program that first activates ports B and D and then outputs the whole resulting register.
 </div>
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter II: Input</div>
 The input register is called "<b>pin</b>".
 <div id="code">
@@ -146,11 +149,11 @@ Now you know how to retrieve the state of ports. In the next chapter you'll lear
 Write a program that emulates a simple diode crossing:<br/>
 Port A adapts the state of port C, port B adapts the state of port D.
 </div>
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter III: Logic</div>
 You can replace all gates with the Luacontroller. Lua provides you three logic operators that you can use:<br/>
 not, and, or
@@ -183,11 +186,11 @@ end
 <li>Write a program that activates port C if pin A and B are both true and pin D is false.</li>
 </ul>
 </div>
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter IV: Interrupts</div>
 <div id="code">
 interrupt(1)
@@ -217,11 +220,11 @@ Code a timer that toggles port A every two seconds.
 <div id="warning">
 When restarting the game, the timer stops working! Use e.g. a blinky plant to restart it.
 </div>
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter V: Events</div>
 Always if the code is executed, there is some reason for it.
 This reason is called event. You can access some of its properties in the event register.
@@ -268,25 +271,25 @@ This toggles port A on falling edge of pin B.
 <div id="task">
 Write a program that toggles all ports apart from A when there is a falling edge on pin A.
 </div>
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter VI: Memory</div>
 This is one of the easiest chapters:
 mem is a table that you can store your information in.
 It only gets deleted when digging the controller, you can even program it without data loss.
 <div id="code">
-print (mem.var)
+print (mem.var)<br/>
 mem.var = "example"
 </div>
 The first time you execute this code, the output will be nil. But after that it will always be "example" - you need to dig the controller to delete that information.
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter VII: Overheating</div>
 You may have already come across overheating, e.g. if you connected both ports of a NOT-Gate.<br/>
 Overheating basically protects the minetest server from crashing. The controller overheats if there are more than 20 operations within 0.5 seconds. Simply try this:
@@ -300,11 +303,11 @@ interrupt(1)<br/>
 interrupt(1)
 </div>
 Each of these interrupts launches two more, and so after just a few seconds the controller will overheat.
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter VIII: Digilines</div>
 First of all, you need the digilines mod from <a href="https://github.com/Jeija/minetest-mod-digilines">here</a>.<br/>
 Digilines are bus wires (like i2c, SPI or RS232 in real electronics) that can be used to connect different digital devices like luacontrollers.<br/>
@@ -333,11 +336,11 @@ You know all the basics of luacontroller programming now, you should be able to 
 <li>Make a simple adder. You need to use input microcontrollers and output microcontrollers, connect them via digilines.</li>
 </ul>
 </div>
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Chapter IX: Restrictions</div>
 Even though the whole code runs in a sandbox, the environment must be restricted so that there is no chance for a player to crash the whole server.<br/>
 This is an extract from the source code that shows the available non-core functionality in the environment:
@@ -361,15 +364,16 @@ local prohibited = {"while", "for", "repeat", "until", "function"}
 </div>
 This must have been done to make sure noone codes an infinite loop or a near-infinite thing.
 In case you want to allow these functions, modify the line above in the sourcecode in mesecons_luacontroller/init.lua
-
+</div>
 
 <hr>
 
-
+<div id="chapter">
 <div id="header">Support / Help</div>
 If you need help or Support, it is best to ask in the meseons forum topic or if it's a digiline-related question in the digiline topic.
 <br/><br/>
 <div id="header">Have fun!</div>
+</div>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <g:plusone></g:plusone>
 
