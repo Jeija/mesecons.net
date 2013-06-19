@@ -115,7 +115,7 @@
 
 
 	<div class = "paragraph-heading">Complex items</div>
-	Complex items like the microcontroller, gates, the dealyer or the torch.
+	Complex items like the microcontroller, gates, the dealyer or the torch are both effectors and receptors. Explaining them would be too much for a dev reference - check out their code!
 
 	<br/><br/>
 	<div class = "paragraph-heading">Design</div>
@@ -127,5 +127,10 @@
 	<br/><br/>
 	<div class = "paragraph-heading">Contribute</div>
 	You contribute by forking https://github.com/Jeija/minetest-mod-mesecons and sending a pull request.
+
+	<br/><br/>
+	<div class = "paragraph-heading">Guidelines</div>
+	Make sure you follow the <a href="devguidelines.php">Development Guidelines</a> before sending a pull request.
+	
 </div>
 <?php include "footer.html";?>
