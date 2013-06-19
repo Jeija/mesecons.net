@@ -72,6 +72,11 @@
 		<img src = "textures/lightstone_red.png"><div id="name">Red</div></a>
 	<a id="item" href="items/lightstone_blue.php" title="Blue Lightstone">
 		<img src = "textures/lightstone_blue.png"><div id="name">Blue</div></a>
+	<a id="item" href="items/emitter.php" title="Wireless emitter">
+		<img src = "textures/wireless_emitter.png"><div id="name">Wireless emitter</div></a>
+	<a id="item" href="items/emitter.php" title="Wireless receiver">
+		<img src = "textures/wireless_receiver.png"><div id="name">Wireless receiver</div></a> 
+ 
 	<hr />
 	<div class="paragraph-heading">Logic</div>
 	<a id="item" class="featured" href="items/luacontroller.php" title="Luacontroller">
