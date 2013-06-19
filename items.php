@@ -54,11 +54,15 @@
 		<img src = "textures/movestone_normal.png"><div id="name">Movestone</div></a>
 	<a id="item" href="items/movestone_sticky.php" title="Sticky Movestone">
 		<img src = "textures/movestone_sticky.png"><div id="name">Sticky Movestone</div></a>
+
+	<a id="item" href="items/dispenser.php" title="Dispenser">
+		<img src = "textures/dispenser.png"><div id="name">Dispenser</div></a>
+
 	<a id="item" href="items/removestone.php" title="Removestone">
 		<img src = "textures/removestone.png"><div id="name">Removestone</div></a>
 	<a id="item" href="items/ghoststone.php" title="Ghoststone">
-
 		<img src = "textures/ghoststone.png"><div id="name">Ghoststone</div></a>
+
 	<a id="item" href="items/commandblock.php" title="Command Block">
 		<img src = "textures/commandblock.png"><div id="name">Command Block</div></a>
 	<br/><b>Lightstones:</b><br/>
