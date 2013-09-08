@@ -14,6 +14,8 @@
 		<img src = "textures/tjunction_insulated.png"><div id="name">T-Junction</div></a>
 	<a id="item" href="items/corner_insulated.php" title="Insulated Corner">
 		<img src = "textures/corner_insulated.png"><div id="name">Corner</div></a>
+	<a id="item" href="items/crossing_insulated.php" title="Insulated Crossing">
+		<img src = "textures/crossing_insulated.png"><div id="name">Crossing</div></a>
 	<a id="item" href="items/vertical.php" title="Vertical Mesecon">
 		<img src = "textures/vertical.png"><div id="name">Vertical Wire</div></a>
 	<a id="item" href="items/mese.php" title="Mese">
@@ -61,7 +63,7 @@
 		<img src = "textures/ghoststone.png"><div id="name">Ghoststone</div></a>
 	<a id="item" href="items/commandblock.php" title="Command Block">
 		<img src = "textures/commandblock.png"><div id="name">Command Block</div></a>
-	<br/><b>Lightstones:</b><br/>
+	<br/><b>Lightstones</b><br/>
 	<a id="item" href="items/lightstone_darkgrey.php" title="Dark grey Lightstone">
 		<img src = "textures/lightstone_darkgrey.png"><div id="name">Dark Grey</div></a>
 	<a id="item" href="items/lightstone_lightgrey.php" title="Light grey Lightstone">
@@ -72,6 +74,8 @@
 		<img src = "textures/lightstone_red.png"><div id="name">Red</div></a>
 	<a id="item" href="items/lightstone_blue.php" title="Blue Lightstone">
 		<img src = "textures/lightstone_blue.png"><div id="name">Blue</div></a>
+	<a id="item" href="items/lightstone_yellow.php" title="Yellow Lightstone">
+		<img src = "textures/lightstone_yellow.png"><div id="name">Yellow</div></a>
 	<hr />
 	<div class="paragraph-heading">Logic</div>
 	<a id="item" class="featured" href="items/luacontroller.php" title="Luacontroller">
