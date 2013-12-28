@@ -166,6 +166,7 @@ margin: 0 0;}
 }
 
 #article .button{
+	text-decoration: none;
 	color:#000000;
 	font-size: 1.25em;
 	background: #827f00;
