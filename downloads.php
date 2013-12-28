@@ -4,13 +4,17 @@
 	<div class = "paragraph-heading">Most up-to-date version from GitHub</div>
 	<div class = "text">
 	<a href="https://github.com/Jeija/minetest-mod-mesecons" target="_blank">Project page</a><br/><br/>
-	<input type="button" class = "button" value = "Download as .zip" onclick="window.open('https://github.com/Jeija/minetest-mod-mesecons/zipball/master')">
-	<input type="button" class = "button" value = "Download as .tar.gz" onclick="window.open('https://github.com/Jeija/minetest-mod-mesecons/tarball/master')">
+	<a href="https://github.com/Jeija/minetest-mod-mesecons/zipball/master" class="button">Download as .zip</a>
+	<a href="https://github.com/Jeija/minetest-mod-mesecons/tarball/master" class="button">Download as .tar.gz</a>
 	</div>
 
 	<br/><br/>
+
 	<div class = "paragraph-heading">Stables</div>
-	<input type="button" class = "button" value = "Open stables" onclick="document.location.href = 'stables.php'">
+	<br/>
+	<a href="stables.php" class="button">Show stables (old)</a>
+	<br/>
+	<br/>
 	</div>
 </div>
 

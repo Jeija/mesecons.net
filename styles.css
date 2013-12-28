@@ -183,6 +183,7 @@ margin: 0 0;}
 }
 
 #article .button:hover{
+	color:#000000;
 	border:7px solid #cccc00;
 	-webkit-transition:border-color 0.3s ease;
 	-moz-transition:border-color 0.3s ease;
