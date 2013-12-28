@@ -9,9 +9,9 @@
 		You can also create logic gates or even computers inside the game with this mod, thanks to microcontrollers and mesecon torches (=redstone torches).
 	</div>
 	<br/><br/>
-	<input type="button" class = "button" value = "Download" onclick="window.open('https://github.com/Jeija/minetest-mod-mesecons/zipball/master')">
-	<input type="button" class = "button" value = "Screenshots" onclick="window.open('screenshots.html')">
+	<a href="https://github.com/Jeija/minetest-mod-mesecons/zipball/master" class="button">Download</a>
+	<a href="screenshots.html" class="button">Screenshots</a>
 	<br/><br/>
-	<iframe width="640" height="360" class = "youtube" src="https://www.youtube-nocookie.com/embed/6kmeQj6iW5k" frameborder="0" allowfullscreen></iframe>
+	<iframe width="640" height="360" class="youtube" src="https://www.youtube-nocookie.com/embed/6kmeQj6iW5k" frameborder="0" allowfullscreen></iframe>
 </div>
 <?php include "footer.html";?>
