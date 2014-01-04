@@ -253,12 +253,12 @@ margin: 0 0;}
 	color:#000000;
 }
 
-#footer .text a {
+#footer .text .largelink {
 	font-size: 1.2em;
 	color:#000000;
 }
 
-#footer .text a:hover {
+#footer .text .largelink:hover {
 	color:#ffffff;
 }
 
