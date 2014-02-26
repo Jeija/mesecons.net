@@ -241,12 +241,12 @@ The following types of events exist:
 <tr>
 	<td>on</td>
 	<td>Thrown when any port is activated.<br/>
-	Additional information available in event.pin: The name of the port (A, B, C or D)</td>
+	Additional information available in event.pin: The name of the port (A, B, C or D), and the x/y/z offset of the pin.</td>
 </tr>
 <tr>
 	<td>off</td>
 	<td>Thrown when any port is deactivated.<br/>
-	Additional information available in event.pin: The name of the port (A, B, C or D)</td>
+	Additional information available in event.pin: The name of the port (A, B, C or D), and the x/y/z offset of the pin.</td>
 </tr>
 <tr>
 	<td>interrupt</td>
@@ -263,7 +263,7 @@ The following types of events exist:
 <br/>
 This now enables us to code a simple T-FlipFlop:
 <div id="code">
-if (event.type == "on" and event.pin == "B") then<br/>
+if (event.type == "on" and event.pin.name == "B") then<br/>
 &nbsp;&nbsp;port.a = not port.a<br/>
 end
 </div>
