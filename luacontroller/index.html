@@ -79,10 +79,10 @@ port.a = false
 This program won't even activate Port A for a millisecond.<br/>
 </div>
 <div id="summary">
-Now you know how to set ports of a microcontroller.<br/>
-A table value for the microcontroller like
+Now you know how to set ports of a luacontroller.<br/>
+A table value for the luacontroller like
 ports is is called "<b>register</b>".
-In the Microcontroller ports are set from A to D, if it gets interrupted meanwhile,
+In the luacontroller ports are set from A to D, if it gets interrupted meanwhile,
 it stops setting ports.
 </div>
 
@@ -203,7 +203,8 @@ interrupt(1, "a parameter")
 </div>
 You can also use numbers or even tables as iid (like pin).
 <div id="warning">
-An interrupt is identified by its argument (= iid = interrupt ID). When setting up an interrupt with a specific parameter and programming the controller again, it will not be deleted if after programming another interrupt with an equal iid is set up (ignore this if you don't understand it).
+An interrupt is identified by its second argument (= iid = interrupt ID). When registering an interrupt, previous ones with the same iid will be removed. When reprogramming the luacontroller, existing interrupts will also be removed.<br/>
+Interrupts resume even after restarting the game.
 </div>
 You can access the parameter using
 <div id="code">
@@ -212,13 +213,10 @@ print(event.iid)
 </div>
 See chapter V for details.
 <div id="warning">
-When using too small values for the time, the microcontroller may overheat and drop itself, see chapter VII.
+When using too small values for the time, the luacontroller may overheat and drop itself, see chapter VII.
 </div>
 <div id="task">
 Code a timer that toggles port A every two seconds.
-</div>
-<div id="warning">
-When restarting the game, the timer stops working! Use e.g. a blinky plant to restart it.
 </div>
 </div>
 
@@ -332,8 +330,8 @@ You know all the basics of luacontroller programming now, you should be able to 
 
 <div id="task">
 <ul>
-<li>Transmit the states of Pin A and B through a digiline to another microcontroller and output them there</li>
-<li>Make a simple adder. You need to use input microcontrollers and output microcontrollers, connect them via digilines.</li>
+<li>Transmit the states of Pin A and B through a digiline to another luacontroller and output them there</li>
+<li>Make a simple adder. You need to use input luacontrollers and output luacontrollers, connect them via digilines.</li>
 </ul>
 </div>
 </div>
