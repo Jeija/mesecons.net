@@ -66,6 +66,17 @@ V 0.9<br/>
 > Bugfixes<br/>
 > Splitup of mod into modules, can be deleted & added by user<br/>
 > Version number jump (mesecons are nearly finished. Will be 1.0 as soon as minetest 0.4 is stable.)<br/>
+
+<div class = "article-heading">Changes since 0.41 and later - GitHub</div>
+<b>Order: oldest to newest</b>
+<?php
+	// git will only clone the repo, if it does not already exist, otherwise just update
+	shell_exec("git clone https://github.com/Jeija/minetest-mod-mesecons");
+	shell_exec("cd minetest-mod-mesecons && git pull");
+	echo ("<ul>");
+	echo (shell_exec("cd minetest-mod-mesecons && git log --reverse --pretty=\<li\>%s\<\/li\>"));
+	echo ("</ul>");
+?>
 </div>
 
 </html>
