@@ -12,6 +12,8 @@
 	<a href="https://github.com/Jeija/minetest-mod-mesecons/zipball/master" class="button">Download</a>
 	<a href="screenshots.html" class="button">Screenshots</a>
 	<br/><br/>
-	<iframe width="640" height="360" class="youtube" src="https://www.youtube-nocookie.com/embed/6kmeQj6iW5k" frameborder="0" allowfullscreen></iframe>
+	<iframe width="640" height="360" class="youtube" src="https://www.youtube-nocookie.com/embed/6kmeQj6iW5k" frameborder="0" allowfullscreen></iframe><br/><br/><br/>
+	<div class = "text">
+	Great resource for beginners<br/> and advanced users: <a href="http://uberi.mesecons.net" class="mecolab"><img src="img/mesecons_laboratory.png"></a></div>
 </div>
 <?php include "footer.html";?>
