@@ -126,9 +126,12 @@
 
 	<br/><br/>
 	<div class = "paragraph-heading">Contribute</div>
-	You contribute by forking https://github.com/Jeija/minetest-mod-mesecons and sending a pull request.
+	You contribute by forking the repository on GitHub and sending a pull request. You may also contribute to the digilines mod (which is an extension that provides a digital bus system) or to this website.<br/>
+	<a href="https://github.com/Jeija/minetest-mod-mesecons">Mesecons mod repository (Lua)</a><br/>
+	<a href="https://github.com/Jeija/mesecons.net">Mesecons.net repository (PHP, HTML, CSS)</a><br/>
+	<a href="https://github.com/Jeija/minetest-mod-digilines">Digilines mod (extension, Lua)</a><br/>
 
-	<br/><br/>
+	<br/>
 	<div class = "paragraph-heading">Guidelines</div>
 	Make sure you follow the <a href="devguidelines.php">Development Guidelines</a> before sending a pull request.
 	
