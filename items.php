@@ -30,6 +30,8 @@
 		<img src = "textures/switch.png"><div id="name">Switch</div></a>
 	<a id="item" href="items/objectdetector.php" title="Object/Player Detector">
 		<img src = "textures/objectdetector.png"><div id="name">Object Detector</div></a>
+	<a id="item" href="items/nodedetector.php" title="Node Detector">
+		<img src = "textures/nodedetector.png"><div id="name">Node Detector</div></a>
 	<a id="item" href="items/walllever.php" title="Wall Lever">
 		<img src = "textures/walllever.png"><div id="name">Wall Lever</div></a>
 	<a id="item" href="items/pressureplate_wood.php" title="Wooden Pressure Plate">

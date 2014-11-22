@@ -57,12 +57,12 @@
 	If a receptor recognized something and you want it to turn on, you have to call
 	<div class = "code">
 	minetest.env:add_node(pos, {name="myreceptor:receptor_on"})
-	mesecon:receptor_on(pos, rules)
+	mesecon.receptor_on(pos, rules)
 	</div>
 	...to turn it off again:
 	<div class = "code">
 	minetest.env:add_node(pos, {name="myreceptor:receptor_off"})
-	mesecon:receptor_off(pos, rules)
+	mesecon.receptor_off(pos, rules)
 	</div>
 	<br/><br/>
 
