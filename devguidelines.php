@@ -5,7 +5,6 @@
 	<div class = "text">
 	Make sure you follow these guidelines to get your own code merged for sure!<br/>
 	If you are not sure if your code complies, just send it in; we'll tell you in case it doesn't.
-	</div>
 	<div class = "paragraph-heading">Code</div>
 	<div class = "code"><pre>
 -- do_something_one(foo) --> Makes xyz
@@ -61,6 +60,7 @@ end)
 	<li>Describe your pull request, what it does and what does not work!</li>
 	<li>You may also provide screenshots if you implement new features</li>
 	<li>If you implement new features, you should also send in an update for mesecons.net <a href="https://github.com/Jeija/mesecons.net">here</a>
+	</div>
 </div>
 
 <?php include "footer.html";?>

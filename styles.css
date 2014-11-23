@@ -129,6 +129,7 @@ margin: 0 0;}
 #article .text {
         color: #222222;
 	font-size: 1.1em;
+	margin-left:30px;
 }
 
 #article #items #item {
@@ -226,6 +227,8 @@ margin: 0 0;}
 }
 
 #article .code {
+	margin-top:8px;
+	margin-bottom:8px;
 	padding: 5px;
 	border: 2px dotted #999999;
 	background: #ffffff;
