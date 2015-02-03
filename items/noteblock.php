@@ -11,7 +11,10 @@
 		Stone: Kick <br/>
 		Chest: Snare <br/>
 		Tree: Crash <br/>
-		Wood: Lite Crash
+		Wood: Lite Crash <br/>
+		TNT: Explosion Sound <br/>
+		Lava Source: Fire Sound <br/>
+		Steel Block: Raises the pitch by one octave
 	</div>
 </div>
 <?php include "../footer.html";?>
