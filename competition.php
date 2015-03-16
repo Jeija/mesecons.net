@@ -1,7 +1,7 @@
 <?php include "header.html";?>
 
 <div id = "article">
-	<img src="img/mecomaco2.0.jpg" height=250px>
+	<img src="img/mecomaco2.0.jpg" height="250px">
 	<div class = "paragraph-heading">Winners</div>
 	<table border="0" cellpadding = "5" >
 	<tr>
