@@ -107,7 +107,7 @@ myrules =
 rules = function(node)
 	if node.param2 == 1 then
 		return {{x=1, y=0, z=0}}
-	elseif mode.param2 == 2 then
+	elseif node.param2 == 2 then
 		...
 	end
 end</pre></div>
