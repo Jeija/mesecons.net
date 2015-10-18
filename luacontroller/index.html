@@ -277,12 +277,12 @@ Write a program that toggles all ports apart from A when there is a falling edge
 <div id="header">Chapter VI: Memory</div>
 This is one of the easiest chapters:
 mem is a table that you can store your information in.
-It only gets deleted when digging the controller, you can even program it without data loss.
+It only gets deleted when digging the controller or if the controller overheats, you can even program it without data loss.
 <div id="code">
 print (mem.var)<br/>
 mem.var = "example"
 </div>
-The first time you execute this code, the output will be nil. But after that it will always be "example" - you need to dig the controller to delete that information.
+The first time you execute this code, the output will be nil. But after that it will always be "example" - you need to dig the controller to delete that information. Writing more than 100kBytes ("luacontroller_memsize" setting) to memory will cause the luacontroller to overheat in order to protect the server.
 </div>
 
 <hr>
@@ -290,7 +290,7 @@ The first time you execute this code, the output will be nil. But after that it 
 <div id="chapter">
 <div id="header">Chapter VII: Overheating</div>
 You may have already come across overheating, e.g. if you connected both ports of a NOT-Gate.<br/>
-Overheating basically protects the minetest server from crashing. The controller overheats if there are too many operations, by default more than 20 within 1 second. Simply try this:
+Overheating basically protects the minetest server from crashing. The controller overheats if not enough resources are available on the controller, by default if more than 20 operations within 1 second are executed. Simply try this:
 <div id="code">
 port.a = not pin.b
 </div>
@@ -302,6 +302,8 @@ interrupt(1)
 </div>
 Each of these interrupts launches two more, and so after just a few seconds the controller will overheat.<br/><br/>
 The current heat of the luacontroller is available in the "heat" variable. You can also retrieve the current maximum heat setting in "heat_max". You can use these to allow adjustment to the current heat (e.g. invoke less interrupts if the controller is too hot).
+<br/><br/>
+The controller may also overheat if the program uses more memory in the mem table (see chapter VI) than available. This won't affect the heat setting, but depends on the size of the serialized mem table. By default, 100kBytes are available per luacontroller ("luacontroller_memsize" setting). If the required memory space exceeds the available memory, the controller will overheat and a notice will be printed on the server command line.
 </div>
 
 <hr>
