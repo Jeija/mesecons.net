@@ -1,0 +1,42 @@
+/** A bunch of CSS imported from the old mesecons website **/
+
+#developers {
+	width:80vw;
+	max-width:1000px;
+	margin:0 auto;
+}
+
+#developers .article-heading {
+	font-size: 2.6em;
+	color: #222222;
+}
+
+#developers .paragraph-heading {
+	font-size: 1.5em;
+	color: #000000;
+}
+
+#developers .code {
+	margin-top:8px;
+	margin-bottom:8px;
+	padding: 5px;
+	border: 2px dotted #999999;
+	background: #ffffff;
+	font-family: Nimbus Mono L, Ubuntu, Arial
+}
+
+#developers .code:hover
+{
+	background:#dddddd;
+	color:#000000;
+}
+
+#developers {
+	margin-bottom:50px;
+}
+
+.dev-hover-item {
+	width:20vw;
+	max-width:140px;
+	float:right;
+}

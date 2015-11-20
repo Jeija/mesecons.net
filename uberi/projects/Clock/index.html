@@ -1,0 +1,135 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="StyleSheet" href="../../Style.css" type="text/css">
+		<link href="../../rainbow/theme.css" rel="stylesheet" type="text/css">
+		<script src="../../rainbow/rainbow.min.js"></script>
+		<title>Clock | The Mesecons Laboratory</title>
+	</head>
+	<body>
+		<div id="content">
+			<h1><a href="../../index.html" class="title">Mesecons Laboratory</a></h1>
+			<p id="subtitle">Adventures in digital circuitry.</p>
+			<br>
+			<h2>Clock</h2>
+			<h3>14/4/13 - Uberi</h3>
+			<p class="difficulty">Difficulty level:
+				<img src="../../img/Difficulty.png">
+				<img src="../../img/Difficulty.png">
+				<img src="../../img/Difficulty.png">
+				<img src="../../img/Difficulty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				(4/10)
+			</p>
+			<p>This article assumes you have the <a href="https://github.com/Jeija/minetest-mod-digilines/">Digilines mod</a>, which I generally consider a de facto part of Mesecons. It is still possible to complete it without this mod, but replacing its functionality with fancy wiring is an exercise left to the reader.</p>
+			<p>Don't you ever wish you had a clock in-game while playing Minetest, just to keep track of all the time you're wasting? Need a timepiece for the top of the main tower in town hall? Let's build one!</p>
+			<img src="img/Clock.gif" alt="Clock" class="picture">
+			<p>This clock will never need adjustment and works even if you use the /time command! This is made possible using the Digilines RTC.</p>
+
+			<h4>Step 1: Design</h4>
+			<p>Before we build anything, let me explain how the Digilines RTC works.</p>
+			<p>The RTC, short for Real Time Clock, is a Digilines device that allows you to obtain the current (in-game) time of day. How does it work? When you plonk an RTC down, you can right-click it to set the channel:</p>
+			<img src="img/RTC.png" alt="Real Time Clock" class="picture">
+			<p>Now, whenever you send a digilines signal on that channel, using "GET" as the message, it will in turn send a digilines signal on that same channel, but with the current time as the message.</p>
+			<p>However, this time isn't just in a standard time format; it's represented as fractional hours. Let's take a look:</p>
+			<pre>/time 0 is midnight.
+/time 500 is half-past midnight.
+/time 7250 is around 7:15 AM.
+/time 1500 is around 3 o'clock PM.</pre>
+			<p>The thousands place and above denotes the hour in 24-hour notation, while the hundreds place and below denotes a fraction of that hour.</p>
+			<p>When we get to the programming section, there will be a more detailed overview of how to deal with coverting this time into the one we're more used to.</p>
+
+			<h4>Step 2: Layout</h4>
+			<p>We want the clock to look as nice as possible. Therefore, we start from the display:</p>
+			<img src="img/Display.png" alt="Clock display" class="picture">
+			<p>Well this is a nice display and all, but there's one big problem with it - it doesn't display anything! Let's remedy that situation:</p>
+			<img src="img/WiredDisplay.png" alt="Wired displays" class="picture">
+			<p>Each digit display has been wired up to a standard seven segment driver supporting the digits 0-9, since that's all we really need. Note that port A faces the lightstone and port C faces the camera in the image above. While the machine can be built in any orientation, I will assume we are using the one shown. Changing the Luacontroller code to work with other orientations is an exercise left for the reader.</p>
+			<p>For the sake of completeness, here is the code inside each Luacontroller on the leftmost display (the ones column of the minutes):</p>
+			<p>Top:</p>
+			<pre data-language="lua">if event.type == "program" then
+  mem.accept = {[0]=true, [2]=true, [3]=true, [5]=true, [6]=true, [7]=true, [8]=true, [9]=true}
+elseif event.type == "digiline" then
+  port.a = mem.accept[event.msg.minute]
+  port.b, port.d = port.a, port.a
+end</pre>
+			<p>Second from top:</p>
+			<pre data-language="lua">if event.type == "program" then
+  mem.accept1 = {[0]=true, [4]=true, [5]=true, [6]=true, [8]=true, [9]=true}
+  mem.accept2 = {[0]=true, [1]=true, [2]=true, [3]=true, [4]=true, [7]=true, [8]=true, [9]=true}
+elseif event.type == "digiline" then
+  port.b = mem.accept1[event.msg.minute]
+  port.d = mem.accept2[event.msg.minute]
+end</pre>
+			<p>Middle:</p>
+			<pre data-language="lua">if event.type == "program" then
+  mem.accept = {[2]=true, [3]=true, [4]=true, [5]=true, [6]=true, [8]=true, [9]=true}
+elseif event.type == "digiline" then
+  port.a = mem.accept[event.msg.minute]
+  port.b, port.d = port.a, port.a
+end</pre>
+			<p>Second from bottom:</p>
+			<pre data-language="lua">if event.type == "program" then
+  mem.accept1 = {[0]=true, [2]=true, [6]=true, [8]=true}
+  mem.accept2 = {[0]=true, [1]=true, [3]=true, [4]=true, [5]=true, [6]=true, [7]=true, [8]=true, [9]=true}
+elseif event.type == "digiline" then
+  port.b = mem.accept1[event.msg.minute]
+  port.d = mem.accept2[event.msg.minute]
+end</pre>
+			<p>Bottom:</p>
+			<pre data-language="lua">if event.type == "program" then
+  mem.accept = {[0]=true, [2]=true, [3]=true, [5]=true, [6]=true, [8]=true, [9]=true}
+elseif event.type == "digiline" then
+  port.a = mem.accept[event.msg.minute]
+  port.b, port.d = port.a, port.a
+end</pre>
+			<p>The other displays have nearly the exact same code, except <code>event.msg.minute</code> is replaced with <code>event.msg.tenminute</code>, <code>event.msg.hour</code>, and <code>event.msg.tenhour</code>, from left to right for each digit display.</p>
+
+			<h4>Step 3: Construction</h4>
+			<p>Now we can wire up the timekeeping unit. First, a Digilines RTC is connected to a Luacontroller that polls it when we need it to:</p>
+			<img src="img/Timekeeping1.png" alt="Clock connected to clock driver" class="picture">
+			<p>The RTC, unsuprisingly, is set to the channel "clock".</p>
+			<p>The code inside the Luacontroller is quite simple:</p>
+			<pre data-language="lua">if event.type == "on" then
+  digiline_send("clock", "GET")
+end</pre>
+			<p>Whenever any of the pins are turned on, it polls the RTC for the current time.</p>
+			<p>The RTC can now be wired to another Luacontroller that does the calculations to convert the time into the hours and minutes most people are familiar with:</p>
+			<img src="img/Timekeeping2.png" alt="Clock connected to display driver" class="picture">
+			<p>A blinky plant is a very reliable oscillator. Luacontrollers and microcontrollers have delay capabilities, but they will not last past a server restart. Using a blinky plant ensures the clock will work regardless of the conditions it is in.</p>
+			<p>The code inside the lower Luacontroller calculates the number of hours and minutes from the time value, and turns them into individual digits to be displayed:</p>
+			<pre data-language="lua">if event.channel == "clock" then
+  time = event.msg * 24
+  hour = math.floor(time)
+  tenhour, hour = math.floor(hour / 10), hour % 10
+  time = (time % 1) * 60
+  minute = math.floor(time)
+  tenminute, minute = math.floor(minute / 10), minute % 10
+  digiline_send("", {tenhour=tenhour, hour=hour, tenminute=tenminute, minute=minute})
+end</pre>
+			<p>After calculations, it sends off a Digilines signal with all the digits packed into a table. The field names should seem rather familiar - they are the same ones that we used in the displays!</p>
+			<p>The only thing left to do is ensure the Digilines signal reaches all the displays:</p>
+			<img src="img/FinalWiring.png" alt="Displays connected to clock" class="picture">
+			<p>The displays update automatically as time passes by. It works!</p>
+
+			<h4>Step 4: Improvements</h4>
+			<p>The clock as it is right now doesn't look very good, with all those wires showing. How about an enclosure?</p>
+			<img src="img/Final.png" alt="Clock with enclosure" class="picture">
+			<p>Or perhaps a blimp?</p>
+			<img src="img/FinalBlimp.png" alt="Clock with enclosure" class="picture">
+			<p>After all, you can't have a world without blimps.</p>
+
+			<h4>Downloads</h4>
+			<p>All files are available under the same license as this article. The WE schematics can be loaded using the //load command in <a href="https://github.com/Uberi/MineTest-WorldEdit">WorldEdit</a>.</p>
+			<p><a href="Clock.we" class="post">Clock in WorldEdit format (WE)</a></p>
+
+			<br><br><br><br>
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+		</div>
+	</body>
+</html>

@@ -1,5 +1,7 @@
-<h1>mesecons.net</h1>
-I will upload this repo to the actual server when there are commits.
-Make sure that everything you put here is legal under the German law,
-the server is hosted at Hetzner online (Level 1).
-It supports PHP, but no MySQL/PostgreSQL
+# Mesecons.net
+Source code for the mesecons website at [mesecons.net](http://mesecons.net). I will update mesecons.net as soon as thing repository changes.
+
+## License
+Everything here is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) license (CC-BY-SA 3.0).
+
+Everything in the `uberi` subdirectory was created by [Uberi](https://github.com/Uberi) (he also released his work under the CC-BY-SA 3.0), everything else was done by me.

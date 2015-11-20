@@ -1,51 +1,59 @@
 body {
-	background:url(/img/bgd.png);
-	font-family:Helvetica, Cantarell, Arial;
+	background:#ccc;
+	font-family:Titillium Web, Cantarell, Arial;
 	font-size:0.95em;
+	margin:0;
+	margin-bottom:30px;
 }
 
 #topbar {
-	height:60px;
-	position: fixed;
-	background: rgba(97,173,109,0.5);
-	top: 0;
-	left: 0;
-	right: 0;
+	position:fixed;
+	top:0;
+	height:50px;
+	width:100vw;
+	border-bottom:1px solid #aaa;
+	box-shadow:0px 0px 10px 0px rgba(0,0,0,0.75);
+	background:#fff;
+	z-index:2;
 }
 
-#topbar img {
+#topbar_logo {
+	float:left;
+	display:inline-block;
+	height:40px;
+	margin-top:5px;
+	margin-left:10px;
+}
+
+#topbar_logotext {
+	float:left;
+	display:inline-block;
+	line-height:50px;
+	font-size:20px;
+	color:#8a8c00;
+	font-weight:bold;
+	font-family:Cantarell;
+	margin-left:15px;
+}
+
+#topbar_controller {
 	background: rgba(0,0,0,0);
 	height:150px;
 	margin-right:5px;
 	position:absolute;
 	top:0;
-	right:0;
-	opacity:0.9;
+	right:50px;
 }
 
 #topbar #topheader {
-	font-size:44px;
-	margin-top:0px;
-	margin-left:40%;
-	color:#ffff00;
-	font-weight:bold;
-}
-
-#topbar #backbutton {
-	float:left;
-	padding:10px;
-	width:50px;
-	border:1px solid black;
+	font-size:30px;
+	line-height:50px;
+	display:block;
 	text-align:center;
-	margin-top:4px;
-	margin-left:7px;
-	background-color:#8a8c00;
-	border-radius:5px;
-	color:#000000;
-	font-weight:bolder;
-	text-decoration:none;
-	font-size:1.4em;
-	opacity:0.9;
+	width:50vw;
+	margin:0 auto;
+	color:#444;
+	font-weight:bold;
 }
 
 #article {

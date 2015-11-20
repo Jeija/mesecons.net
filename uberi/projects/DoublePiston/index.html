@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="StyleSheet" href="../../Style.css" type="text/css">
+		<link href="../../rainbow/theme.css" rel="stylesheet" type="text/css">
+		<script src="../../rainbow/rainbow.min.js"></script>
+		<title>The Double Sticky Piston Driver | The Mesecons Laboratory</title>
+	</head>
+	<body>
+		<div id="content">
+			<h1><a href="../../index.html" class="title">Mesecons Laboratory</a></h1>
+			<p id="subtitle">Adventures in digital circuitry.</p>
+			<br>
+			<h2>The Double Sticky Piston Driver</h2>
+			<h3>15/3/13 - Uberi</h3>
+			<p class="difficulty">Difficulty level:
+				<img src="../../img/Difficulty.png">
+				<img src="../../img/Difficulty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				<img src="../../img/DifficultyEmpty.png">
+				(2/10)
+			</p>
+			<p>The double sticky piston driver is an important component of many circuits that need to push nodes farther than just one block.</p>
+			<p>Here's a quick picture of what we'll be making:</p>
+			<img src="img/DoublePiston.gif" alt="Double sticky piston extend/retract animation" class="picture">
+			<p>What we have is two pistons, one in front of the other. Let's call them the front and back pistons.</p>
+			<p>When powered, it pushes a node forward by two blocks. When unpowered, it pulls a node backward by two blocks.</p>
+			<p>This is a pretty simple circuit, but there are a lot nuances to be aware of with regards to timing and ordering. For example, an extended piston cannot be pushed or pulled correctly since the stopper is out, and a sticky piston pulls when it receives an off signal, but not when it is dug.</p>
+
+			<h4>Step 1: Design</h4>
+			<p>The first step in building something is knowing what you want to do. Let's see what we're looking for when doing pushing:</p>
+			<ol>
+				<li>The back piston is powered, pushing the front piston and node forward one block.</li>
+				<li>The front piston is powered, pushing the node forward one block.</li>
+			</ol>
+			<p>Pretty simple for now. How about retracting?</p>
+			<ol>
+				<li>The front piston is unpowered, pulling the node back one block.</li>
+				<li>The back piston is unpowered, pulling the front piston back one block.</li>
+				<li>The front piston is powered, touching the node.</li>
+				<li>The front piston is unpowered, pulling the node back one block.</li>
+			</ol>
+			<p>The retraction is a bit more complex since sticky pistons can only pull one block at a time.</p>
+
+			<h4>Step 2: Layout</h4>
+			<p>First, we need to set up the basic components. In other words, the pistons and the node we are pushing/pulling:</p>
+			<img src="img/DoublePiston1.png" alt="Two pistons and a node" class="picture">
+			<p>On the left we have the rear piston, on the middle, the front piston. To the right we find the node itself. I used cobble as an example.</p>
+
+			<h4>Step 3: Control</h4>
+			<p>Now that the pistons are in place, there needs to be some way of converting the on/off signal into the sequences described in Step 1. There are a whole bunch of ways you can go about this, but I find that the easiest way is to simply use a Luacontroller and wire three of the four ports into their proper places:</p>
+			<img src="img/DoublePiston2.png" alt="Luacontroller wired to two pistons" class="picture">
+			<p>You'll notice that I connected the fourth, unused port to a switch. This will be our signal. When turned on, the circuit will perform the extension sequence. When turned off, the circuit will perform the retraction sequence.</p>
+			<p>At the moment the circuit can be made significantly smaller, but we will cover that later.</p>
+
+			<h4>Step 4: Programming</h4>
+			<p>If you don't know much about Luacontrollers, you might find the <a href="http://mesecons.net/luacontroller/">Luacontroller tutorial</a> handy.</p>
+			<p>Port A is facing our switch. If you made it in a different orientation, simply replace the port names with their rotated equivalents. For example, <code>port.b</code> would become <code>port.c</code> in the code if you built the machine 90 degrees clockwise from the orientation used here.</p>
+			<p>We're going to first outline the basic actions the controller will perform:</p>
+			<pre data-language="lua">if pin.a then
+  --extend
+else
+  --retract
+end</pre>
+			<p>Then, work forwards through each sequence. I obtained the following as the final result:</p>
+			<pre data-language="lua">if event.iid == "pull1" then
+  port.b = false
+  interrupt(0.2, "push2")
+elseif event.iid == "push2" then
+  port.c = true
+  interrupt(0.2, "pull2")
+elseif event.iid == "pull2" then
+  port.c = false
+else
+  if pin.a then --extend
+    port.b = true
+    port.d = true
+  else --retract
+    port.d = false
+    interrupt(0.2, "pull1")
+  end
+end</pre>
+			<p>Congratulations! You now have a working double piston extender.</p>
+
+			<h4>Step 5: Improvements</h4>
+			<p>We're not done yet though. The circuit can still be made better. For example, we can remove the row of wires leading up to the pistons:</p>
+			<img src="img/DoublePiston3.png" alt="Final design" class="picture">
+			<p>Or maybe a version embedded in the ground to gave a low footprint:</p>
+			<img src="img/DoublePiston4.png" alt="Low footprint design" class="picture">
+			<p>Here I've replaced a bit of the ground with glass to better view the circuitry.</p>
+			<p>The possibilities are endless. Play around with the concepts and see what you can come up with!</p>
+
+			<h4>Downloads</h4>
+			<p>All files are available under the same license as this article. The WEM schematics can be loaded using the //load command in <a href="https://github.com/Uberi/MineTest-WorldEdit">WorldEdit</a>.</p>
+			<p><a href="DoublePiston.wem" class="post">Double sticky piston driver in WorldEdit-Meta format (WEM)</a></p>
+			<p><a href="DoublePistonLowProfile.wem" class="post">Low profile double sticky piston driver in WorldEdit-Meta format (WEM)</a></p>
+			<br><br><br><br>
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+		</div>
+	</body>
+</html>

@@ -1,0 +1,243 @@
+return {
+-- Table: {1}
+{
+   {2},
+   {3},
+   {4},
+   {5},
+   {6},
+   {7},
+   {8},
+   {9},
+   {10},
+},
+-- Table: {2}
+{
+   ["y"]=0,
+   ["x"]=0,
+   ["name"]="default:sign_wall",
+   ["z"]=1,
+   ["meta"]={11},
+   ["param2"]=1,
+   ["param1"]=79,
+},
+-- Table: {3}
+{
+   ["y"]=0,
+   ["x"]=1,
+   ["name"]="mesecons_switch:mesecon_switch_off",
+   ["z"]=1,
+   ["meta"]={12},
+   ["param2"]=1,
+   ["param1"]=0,
+},
+-- Table: {4}
+{
+   ["y"]=0,
+   ["x"]=2,
+   ["name"]="mesecons_insulated:insulated_off",
+   ["z"]=1,
+   ["meta"]={13},
+   ["param2"]=2,
+   ["param1"]=47,
+},
+-- Table: {5}
+{
+   ["y"]=0,
+   ["x"]=3,
+   ["name"]="mesecons_extrawires:corner_off",
+   ["z"]=0,
+   ["meta"]={14},
+   ["param2"]=2,
+   ["param1"]=47,
+},
+-- Table: {6}
+{
+   ["y"]=0,
+   ["x"]=3,
+   ["name"]="mesecons_luacontroller:luacontroller0000",
+   ["z"]=1,
+   ["meta"]={15},
+   ["param2"]=0,
+   ["param1"]=31,
+},
+-- Table: {7}
+{
+   ["y"]=0,
+   ["x"]=3,
+   ["name"]="mesecons_extrawires:corner_off",
+   ["z"]=2,
+   ["meta"]={16},
+   ["param2"]=3,
+   ["param1"]=47,
+},
+-- Table: {8}
+{
+   ["y"]=0,
+   ["x"]=4,
+   ["name"]="default:cobble",
+   ["z"]=0,
+   ["meta"]={17},
+   ["param2"]=0,
+   ["param1"]=0,
+},
+-- Table: {9}
+{
+   ["y"]=0,
+   ["x"]=4,
+   ["name"]="mesecons_pistons:piston_sticky_off",
+   ["z"]=1,
+   ["meta"]={18},
+   ["param2"]=0,
+   ["param1"]=0,
+},
+-- Table: {10}
+{
+   ["y"]=0,
+   ["x"]=4,
+   ["name"]="mesecons_pistons:piston_sticky_off",
+   ["z"]=2,
+   ["meta"]={19},
+   ["param2"]=0,
+   ["param1"]=0,
+},
+-- Table: {11}
+{
+   ["inventory"]={20},
+   ["fields"]={21},
+},
+-- Table: {12}
+{
+   ["inventory"]={22},
+   ["fields"]={23},
+},
+-- Table: {13}
+{
+   ["inventory"]={24},
+   ["fields"]={25},
+},
+-- Table: {14}
+{
+   ["inventory"]={26},
+   ["fields"]={27},
+},
+-- Table: {15}
+{
+   ["inventory"]={28},
+   ["fields"]={29},
+},
+-- Table: {16}
+{
+   ["inventory"]={30},
+   ["fields"]={31},
+},
+-- Table: {17}
+{
+   ["inventory"]={32},
+   ["fields"]={33},
+},
+-- Table: {18}
+{
+   ["inventory"]={34},
+   ["fields"]={35},
+},
+-- Table: {19}
+{
+   ["inventory"]={36},
+   ["fields"]={37},
+},
+-- Table: {20}
+{
+},
+-- Table: {21}
+{
+   ["text"]="Double sticky piston driver",
+   ["infotext"]="\"Double sticky piston driver\"",
+   ["formspec"]="field[text;;${text}]",
+},
+-- Table: {22}
+{
+},
+-- Table: {23}
+{
+},
+-- Table: {24}
+{
+},
+-- Table: {25}
+{
+},
+-- Table: {26}
+{
+},
+-- Table: {27}
+{
+},
+-- Table: {28}
+{
+},
+-- Table: {29}
+{
+   ["heat"]="-1",
+   ["code"]="if event.iid == \"pull1\" then\
+  port.b = false\
+  interrupt(0.2, \"push2\")\
+elseif event.iid == \"push2\" then\
+  port.c = true\
+  interrupt(0.2, \"pull2\")\
+elseif event.iid == \"pull2\" then\
+  port.c = false\
+else\
+  if pin.a then --extend\
+    port.b = true\
+    port.d = true\
+  else --retract\
+    port.d = false\
+    interrupt(0.2, \"pull1\")\
+  end\
+end",
+   ["lc_interrupts"]="return { \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\", \"pull1\", \"push2\", \"pull2\" }",
+   ["formspec"]="size[10,8]background[-0.2,-0.25;10.4,8.75;jeija_luac_background.png]textarea[0.2,0.6;10.2,5;code;;if event.iid == \"pull1\" then\
+  port.b = false\
+  interrupt(0.2, \"push2\")\
+elseif event.iid == \"push2\" then\
+  port.c = true\
+  interrupt(0.2, \"pull2\")\
+elseif event.iid == \"pull2\" then\
+  port.c = false\
+else\
+  if pin.a then --extend\
+    port.b = true\
+    port.d = true\
+  else --retract\
+    port.d = false\
+    interrupt(0.2, \"pull1\")\
+  end\
+end]image_button[3.75,6;2.5,1;jeija_luac_runbutton.png;program;]image_button_exit[9.72,-0.25;0.425,0.4;jeija_close_window.png;exit;]label[0.1,5;]",
+   ["lc_memory"]="return {  }",
+},
+-- Table: {30}
+{
+},
+-- Table: {31}
+{
+},
+-- Table: {32}
+{
+},
+-- Table: {33}
+{
+},
+-- Table: {34}
+{
+},
+-- Table: {35}
+{
+},
+-- Table: {36}
+{
+},
+-- Table: {37}
+{
+},
+}

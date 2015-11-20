@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Mesecons - Items</title>
+	<link rel="icon" type="image/ico" href="/img/favicon.ico">
+	<meta name="viewport" content="width=width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+	<script src="common.js"></script>
+	<script src="items.js"></script>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div id="header">
+		<a href="index.html"><img id="header_logo" src="img/logo.png"></a>
+		<a href="index.html"><div id="header_logotext">Mesecons</div></a>
+		<div id="header_menu">
+			<a class="header_menuitem" href="items.html">Items</a>
+			<a class="header_menuitem" href="digilines.html">Digilines</a>
+			<a class="header_menuitem" href="developers.html">Developers</a>
+		</div>
+	</div>
+	<div class="banner banner-items"></div>
+
+	<div id="documentation"></div>
+
+	<div id="item_popup" hidden><div id="popup_container">
+		<div id="popup_header">
+			<div id="popup_name"></div>
+			<img id="popup_preview">
+			<div id="popup_close">&#10006;</div>
+		</div>
+		<img id="popup_recipe">
+		<div id="popup_norecipe">(No recipe available)</div>
+		<div id="popup_description"></div>
+	</div></div>
+</body>
+</html>
