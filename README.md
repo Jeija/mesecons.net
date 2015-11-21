@@ -1,5 +1,5 @@
 # Mesecons.net
-Source code for the mesecons website at [mesecons.net](http://mesecons.net). I will update mesecons.net as soon as thing repository changes.
+Source code for the mesecons website at [mesecons.net](http://mesecons.net). I will update mesecons.net as soon as this repository changes.
 
 ## License
 Everything here is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) license (CC-BY-SA 3.0).
