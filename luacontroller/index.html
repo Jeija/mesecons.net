@@ -331,21 +331,37 @@ You know all the basics of luacontroller programming now, you should be able to 
 <hr>
 
 <div id="chapter">
-<div id="header">Chapter IX: Restrictions</div>
+<div id="header">Chapter IX: Miscellaneous</div>
+Since access to os.date is considered unsafe as it might crash lua and therefore the minetest server, a wrapper function called "os.datetable()" has been implemented. This function returns a table containing the current real-world date and time of the server:
+<div id="code">
+{
+&nbsp;&nbsp;hour = 11, min = 27, wday = 7, day = 2, month = 1,
+&nbsp;&nbsp;year = 2016, sec = 42, yday = 2, isdst = false
+}
+</div>
+<div id="task">
+	You can use this to build a clock that displays the real-world time. Lightstones are great for displays.
+</div>
+</div>
+
+<hr>
+
+<div id="chapter">
+<div id="header">Chapter X: Restrictions</div>
 Even though the whole code runs in a sandbox, the environment must be restricted so that there is no chance for a player to crash the whole server.<br/>
 This is an extract from the source code that shows the available non-core functionality in the environment:
 <div id="code">
 {<br/>
-print = safeprint,<br/>
-pin = merge_portstates(vports, rports),<br/>
-port = vports,<br/>
-interrupt = getinterrupt(pos),<br/>
-digiline_send = getdigiline_send(pos),<br/>
-mem = mem,<br/>
-tostring = tostring,<br/>
-tonumber = tonumber,<br/>
-string = string,<br/>
-event = event<br/>
+&nbsp;&nbsp;print = safeprint,<br/>
+&nbsp;&nbsp;pin = merge_portstates(vports, rports),<br/>
+&nbsp;&nbsp;port = vports,<br/>
+&nbsp;&nbsp;interrupt = getinterrupt(pos),<br/>
+&nbsp;&nbsp;digiline_send = getdigiline_send(pos),<br/>
+&nbsp;&nbsp;mem = mem,<br/>
+&nbsp;&nbsp;tostring = tostring,<br/>
+&nbsp;&nbsp;tonumber = tonumber,<br/>
+&nbsp;&nbsp;string = string,<br/>
+&nbsp;&nbsp;event = event<br/>
 }
 </div>
 There are no other functions apart from these. Additionally, some core-functions had to be blocked:
