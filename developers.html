@@ -83,15 +83,13 @@ minetest.register_node("any:name", {
 
 	<br/>
 	If a receptor recognized something and you want it to turn on, you have to call
-	<div class = "code">
-	minetest.env:add_node(pos, {name="myreceptor:receptor_on"})
-	mesecon.receptor_on(pos, rules)
-	</div>
+	<div class = "code"><pre>
+	minetest.set_node(pos, {name="myreceptor:receptor_on"})
+	mesecon.receptor_on(pos, rules)</pre></div>
 	...to turn it off again:
-	<div class = "code">
-	minetest.env:add_node(pos, {name="myreceptor:receptor_off"})
-	mesecon.receptor_off(pos, rules)
-	</div>
+	<div class = "code"><pre>
+	minetest.set_node(pos, {name="myreceptor:receptor_off"})
+	mesecon.receptor_off(pos, rules)</pre></div>
 	<br/><br/>
 
 
@@ -103,12 +101,19 @@ minetest.register_node("any:name", {
 minetest.register_node("any:name", {
 	...
 	mesecons = {effector = {
-	rules = mesecon.rules
+		rules = mesecon.rules
 		action_on = function (pos, node)
+			-- do something to turn the effector on
+		end
 		action_off = function (pos, node)
+			-- do something to turn the effector off
+		end
 		action_change = function (pos, node)
+			-- do something whenever any input to the effector changes
+		end
 	}}
 })</pre></div>
+	All action functions are optional, but obviously there should be at least one to have your effector do anything at all.<br/>
 	<b>rules</b> = a mesecon.rules | If not specified, is mesecon.rules.default | Defines the connection rules of the effector | Can be a function or a rules table<br/>
 	<b>action_on</b> a function (pos, node) | It is called when the effector receives power and is not powered by anything else<br/>
 	<b>action_off</b> a function (pos, node) | It is called when the effector doesn't receive power anymore and is not powered by anything else<br/>
