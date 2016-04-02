@@ -364,12 +364,12 @@ This is an extract from the source code that shows the available non-core functi
 &nbsp;&nbsp;event = event<br/>
 }
 </div>
-There are no other functions apart from these. Additionally, some core-functions had to be blocked:
+There are no other functions apart from these.<br/>
+Unfortunately, in order to prevent denial of service attacks on minetest servers, code execution on the Luacontroller is limited to a certain number of instructions. It is very unlikely to reach this limit during normal usage. If, however, your code still seems to time out for no reason, you may adjust the maximum number of instructions by editing the default value of
 <div id="code">
-local prohibited = {"while", "for", "repeat", "until", "function"}
+mesecon.luacontroller_maxevents = 10000
 </div>
-This must have been done to make sure noone codes an infinite loop or a near-infinite thing.
-In case you want to allow these functions, modify the line above in the sourcecode in mesecons_luacontroller/init.lua
+in your minetest.conf.
 </div>
 
 <hr>
