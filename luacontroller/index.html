@@ -299,9 +299,9 @@ The controller may also overheat if the program uses more memory in the mem tabl
 
 <div id="chapter">
 <div id="header">Chapter VIII: Digilines</div>
-First of all, you need the digilines mod from <a href="https://github.com/Jeija/minetest-mod-digilines">here</a>.<br/>
+First of all, you need the digilines mod from <a href="https://github.com/minetest-mods/digilines">here</a>.<br/>
 Digilines are bus wires (like i2c, SPI or RS232 in real electronics) that can be used to connect different digital devices like luacontrollers.<br/>
-Digilines are very powerful and can also be used to e.g. build a multiplier in a very small space, or even a whole computer in the size of a typical, larger minetest house.<br/>
+Digilines are very powerful and can also be used to e.g. build a multiplier in a very small space, or even a whole computer at the size of a minetest house.<br/>
 So let's use them!
 <div id="code">
 digiline_send(channel, msg)
@@ -310,7 +310,7 @@ This is basically the only function you need to remember. This function allows y
 You can connect a digiline just like an ordinary mesecon wire, you will have to use a port on it.
 To access information received from a digiline use:
 <div id="code">
-if (event.type=="digiline")<br/>
+if event.type == "digiline" then<br/>
 &nbsp;&nbsp;print(event.channel)<br/>
 &nbsp;&nbsp;print(event.msg)<br/>
 end
