@@ -342,6 +342,14 @@ Since access to os.date is considered unsafe as it might crash lua and therefore
 <div id="task">
 	You can use this to build a clock that displays the real-world time. Lightstones are great for displays.
 </div>
+<br/>
+It is also possible to have the luacontroller reprogram itself by supplying the code as a string to the program() function:
+<div id="code">
+program("port.b = true")
+</div>
+<div id="task">
+	You can use this to update the code from another luacontroller, user input, or any kind of storage device.
+</div>
 </div>
 
 <hr>
