@@ -51,7 +51,7 @@ port.a = true<br/>
 port.b = true<br/>
 port.c = true<br/>
 </div><br/>
-The same thin is also possible in one line only:
+The same thing is also possible in one line only:
 <div id="code">
 port = {a=true, b=true, c=true}
 </div><br/>
@@ -299,15 +299,16 @@ The controller may also overheat if the program uses more memory in the mem tabl
 
 <div id="chapter">
 <div id="header">Chapter VIII: Digilines</div>
-First of all, you need the digilines mod from <a href="https://github.com/minetest-mods/digilines">here</a>.<br/>
-Digilines are bus wires (like i2c, SPI or RS232 in real electronics) that can be used to connect different digital devices like luacontrollers.<br/>
-Digilines are very powerful and can also be used to e.g. build a multiplier in a very small space, or even a whole computer at the size of a minetest house.<br/>
-So let's use them!
+First of all, get the digilines mod from <a href="https://github.com/minetest-mods/digilines">Minetest-Mods</a>.<br/><br/>
+Digilines are bus wires (like i2c, SPI or RS232 in real electronics) that can be used to connect different digital devices like luacontrollers.
+Digilines are very powerful and can also be used to e.g. build a multiplier in a very small space, or even a whole computer at the size of a minetest house.<br/><br/>
+
+A digiline transmission is defined by its content ("message") and its channel. Digiline devices (like the LCD) usually only transmit or listen on one channel. The luacontroller, however, can communicate on any number of channels with multiple peripherals or other luacontrollers. Channels can be strings, numbers and booleans (strings are recommended though). <br/><br/>
 <div id="code">
 digiline_send(channel, msg)
 </div>
-This is basically the only function you need to remember. This function allows you to send any message on any channel, you can send numbers, bools, strings or even tables.<br/>
-You can connect a digiline just like an ordinary mesecon wire, you will have to use a port on it.
+This is basically the only function you need to remember. This function allows you to send any message on any channel, you can use numbers, booleans, strings or even tables as messages.<br/><br/>
+Just like an ordinary mesecon wire, you can connect a digiline to any port of the luacontroller. Digiline messages are sent out and received through all ports simultaneously.
 To access information received from a digiline use:
 <div id="code">
 if event.type == "digiline" then<br/>
@@ -315,11 +316,12 @@ if event.type == "digiline" then<br/>
 &nbsp;&nbsp;print(event.msg)<br/>
 end
 </div>
-
+<div id="warning">
+Digiline messages may be tables, strings, numbers, booleans or nil. Functions, however, are not permitted and will be be transmitted as nil or removed from tables that contain them. The maximum length of a digiline message is limited to 50000 characters in a serialized form. This can be tweaked using the "luacontroller_digiline_maxlen" setting. If your channel doesn't comply to type restrictions or your message is too long, digiline_send will return false, otherwise true.
+</div>
 <div id="summary">
 You know all the basics of luacontroller programming now, you should be able to build great structures already, even if you don't realize it yet. Start with something small like a 4-bit memory and got on with even larger structures. But most importantly, be creative!
 </div>
-
 <div id="task">
 <ul>
 <li>Transmit the states of Pin A and B through a digiline to another luacontroller and output them there</li>
