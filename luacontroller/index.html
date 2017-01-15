@@ -317,7 +317,7 @@ if event.type == "digiline" then<br/>
 end
 </div>
 <div id="warning">
-Digiline messages may be tables, strings, numbers, booleans or nil. Functions, however, are not permitted and will be be transmitted as nil or removed from tables that contain them. The maximum length of a digiline message is limited to 50000 characters in a serialized form. This can be tweaked using the "luacontroller_digiline_maxlen" setting. If your channel doesn't comply to type restrictions or your message is too long, digiline_send will return false, otherwise true.
+Digiline messages may be tables, strings, numbers, booleans, functions or nil. However, it is discouraged to use digilines for sending functions since that does not fit the bus wire metaphor and may get prohibited in a future update. The maximum length of a digiline message is limited to 50000 characters in a serialized form. This can be tweaked using the "luacontroller_digiline_maxlen" setting. If your channel doesn't comply to type restrictions or your message is too long, digiline_send will return false, otherwise true.
 </div>
 <div id="summary">
 You know all the basics of luacontroller programming now, you should be able to build great structures already, even if you don't realize it yet. Start with something small like a 4-bit memory and got on with even larger structures. But most importantly, be creative!
