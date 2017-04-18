@@ -53,9 +53,9 @@
 minetest.register_node("any:name", {
 	...
 	mesecons = {conductor = {
-		state = mesecon.state.on/off
-		onstate = "any:name_on"
-		offstate = "any:name_off"
+		state = mesecon.state.on/off,
+		onstate = "any:name_on",
+		offstate = "any:name_off",
 		rules = mesecon.rules
 	}}
 })</pre></div>
@@ -73,7 +73,7 @@ minetest.register_node("any:name", {
 minetest.register_node("any:name", {
 	...
 	mesecons = {receptor = {
-		state = mesecon.state.on/off
+		state = mesecon.state.on/off,
 		rules = mesecon.rules
 	}}
 })</pre></div>
@@ -104,10 +104,10 @@ minetest.register_node("any:name", {
 		rules = mesecon.rules
 		action_on = function (pos, node)
 			-- do something to turn the effector on
-		end
+		end,
 		action_off = function (pos, node)
 			-- do something to turn the effector off
-		end
+		end,
 		action_change = function (pos, node)
 			-- do something whenever any input to the effector changes
 		end
