@@ -40,3 +40,31 @@
 	max-width:140px;
 	float:right;
 }
+
+.guideline:before {
+	content: "?";
+	position: absolute;
+	padding: 1px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.guideline:hover:before {
+	font-family:"Titillium Web", "Fira Sans", Cantarell, Arial;
+	display: inline;
+	position: absolute;
+	font-size: 16px
+	border: 1px solid black;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: white;
+	border-radius: 3px
+}
+
+.ref1:hover:before {content: "Make sure functions and variables that don't need to be public are defined local"}
+.ref2:hover:before {content: "To modify an array member by its index, preferably use bar.foo, not bar[\"foo\"] if not required"}
+.ref3:hover:before {content: "Define functions inside registrations; Makes things clearer, you know which function belongs to which registration"}
+.ref4:hover:before {content: "You can put simple if constructions in one line only or use one line if the IFs do the same thing over and over again."}
+.ref5:hover:before {content: "If you use functions with similar parameters, it looks better to make it like the parameters are in a vertical line."}
+.ref6:hover:before {content: "Make spaces and empty lines between functions and inside functions for segments"}
+.ref7:hover:before {content: "If a line becomes very long, try to split it. Try not to use more than 100 chars per line."}
