@@ -186,11 +186,10 @@ interrupt(1)
 print("execute")
 </div>
 This simple code snippet is executed over and over, all 1 second. Interrupts are basically timers, they make the code get executed again after a specific time, here it is 1 second.<br/>
-You can also pass a single argument to the next call, use
+You can also pass a single string to the next call, use
 <div id="code">
 interrupt(1, "a parameter")
 </div>
-You can also use numbers or even tables as iid (like pin).
 <div id="warning">
 An interrupt is identified by its second argument (= iid = interrupt ID). When registering an interrupt, previous ones with the same iid will be removed. When reprogramming the luacontroller, existing interrupts will also be removed.<br/>
 Interrupts resume even after restarting the game.
