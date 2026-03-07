@@ -101,7 +101,7 @@ minetest.register_node("any:name", {
 minetest.register_node("any:name", {
 	...
 	mesecons = {effector = {
-		rules = mesecon.rules
+		rules = mesecon.rules,
 		action_on = function (pos, node)
 			-- do something to turn the effector on
 		end,
